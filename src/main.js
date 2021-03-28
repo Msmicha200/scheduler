@@ -1,6 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './pages/Index.vue'
 import './registerServiceWorker'
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:8081/';
 
 Vue.config.productionTip = false
 

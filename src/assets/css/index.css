@@ -1,0 +1,8 @@
+.select-box-container {
+    max-width: 350px;
+    padding: 25px 0;
+}
+
+.area-container {
+    max-width: unset;
+}
