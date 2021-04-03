@@ -44,7 +44,7 @@ export default {
 textarea {
     height: 100%;
     resize: none;
-    border: 1px solid #CFCFCF;
+    border: 2px solid #CFCFCF;
     border-radius: 10px;
     padding: 20px;
     width: 100%;
@@ -80,6 +80,10 @@ textarea {
 .invalid .error-text {
     opacity: 1;
     visibility: visible;
+}
+
+.invalid-notext textarea {
+    border-color: red;
 }
 
 .area {

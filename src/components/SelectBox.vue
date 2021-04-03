@@ -2,26 +2,17 @@
     <div :class="{'opened-select' : opened}" class="select-container" :selected-id="selected[keyTitle]">
         <span v-if="title" class="bold input-title flex">{{ title }}</span>
         <div @click="open" :class="searchable ? '' : 'top-padding-select'" class="select-box flex align-between">
-            <span v-if="searchable" class="selected-item">
-                <input :placeholder="placeholder" class="top-padding-select" v-model.trim="searchValue" type="text" >
-            </span>
-            <span v-else class="selected-item">
+            <span class="selected-item">
                 {{ selected[textTitle] || placeholder }}
             </span>
-            <div class="arrow">
+            <div class="arrow flex align-center valign-center">
                 <img src="@/assets/img/select-arrow.svg" alt="">
             </div>
         </div>
         <ul class="options-list">
             <!-- <li class="empty"></li> -->
             <li v-if="!items.length">{{ emptyLabel || 'Нема вибору' }}</li>
-            <li v-if="searchable" v-for="item of searched"
-            :key="item[keyTitle]"
-            @click="select(item)"
-            v-bind="$attrs">
-                {{ item[textTitle].trim() }}
-            </li>
-            <li v-if="!searchable" v-for="item of items"
+            <li v-for="item of items"
             :key="item[keyTitle]"
             @click="select(item)"
             v-bind="$attrs">
@@ -132,20 +123,7 @@ export default {
         document.addEventListener('click', this.close);
     },
     created: function () {
-        if (typeof this.selectedItem == "object") {
-            if (Object.keys(this.selectedItem || {}).length > 0) {
-                if (this.selectedItem[this.keyTitle] != null)
-                    this.$emit('on-select', this.selectedItem);
-            }
-        }
-        else if (typeof this.selectedItem == "string" || typeof this.selectedItem == "number") {
-            for(const elem of this.items) {
-                if (elem[this.keyTitle] == this.selectedItem) {
-                    this.selected = elem;
-                    this.$emit('on-select', this.selectedItem);
-                }
-            }
-        }
+
     }
 }
 </script>
